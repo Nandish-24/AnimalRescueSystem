@@ -1,0 +1,127 @@
+body{
+	background-color: #bfb2b2;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 12px 12px;
+    background-color: #d3d9e3;
+    z-index: 1000; /* Ensures the navbar is above other content */
+}
+
+.navbar a {
+    display: block;
+    color: black;
+    text-align: center;
+    margin: 12px 15px;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.navbar a:hover {
+    background-color: #e65073;
+    color: black;
+    cursor: progress;
+}
+
+.navbar a:nth-child(5) {
+    border: 3.5px solid #FFDD43;
+    padding: 18px;
+}
+.marquee{
+	padding: 20px;
+	margin: 20px 0;
+	background-color: #f4f4f4;
+	font-size:25px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.marquee p{
+	display:inline-block;
+	animation: marquee 15s linear infinite;
+}
+@keyframes marquee{
+	0%{
+		transform: translateX(200%);
+	}
+	100%{
+		transform: translateX(-100%);
+	}
+}
+
+.container {
+	max-width: 1200px;
+	margin: auto;
+	padding: 20px;
+}
+.header {
+	text-align: center;
+	padding: 50px 0;
+}
+.header h1 {
+	font-size: 3em;
+	margin: 0;
+}
+.header p {
+	font-size: 1.2em;
+	color: #666;
+}
+.mission, .team {
+	margin: 40px 0;
+}
+.mission h2, .team h2 {
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+.mission p, .team p {
+	font-size: 1.2em;
+	line-height: 1.6;
+}
+.team-members {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.team-member {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
+	width: 250px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.team-member img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
+.team-member h3 {
+	font-size: 1.5em;
+	margin: 10px 0;
+}
+.team-member p {
+	font-size: 1em;
+	color: #666;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}

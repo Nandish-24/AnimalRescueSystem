@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="donation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Donation - Animal Rescue</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="adaption.html">Adoption</a>
+        <a href="donation.html">Donation</a>
+    </div><br>
+    <br>
+    <div class="container">
+        <h2>Donate to Animal Rescue</h2>
+        <img src="images/payment.png"><br>
+            <script async
+              src="https://js.stripe.com/v3/buy-button.js" class="payment">
+            </script>
+
+            <stripe-buy-button
+              buy-button-id="buy_btn_1PTp8bSDZjrv4U65rOfCeJs0"
+              publishable-key="pk_test_51PIFywSDZjrv4U65UdD1uZDa333YQZA6PYNJeCTD01g11SvEK6VXWl1Hgr5DJjodPmWQjPw2CIGogo9e0Qn4fFDW00jRALVNMl">
+            </stripe-buy-button>
+    </div>
+    <script>
+
+        function validateForm() {
+            var isValid = true;
+
+            // Clear previous error messages
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("amountError").innerHTML = "";
+            document.getElementById("cardError").innerHTML = "";
+
+            // Validate name
+            var name = document.getElementById("name").value;
+            if (name.trim() === "") {
+                document.getElementById("nameError").innerHTML = "Full name is required.";
+                isValid = false;
+            }
+
+            // Validate email
+            var email = document.getElementById("email").value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+                isValid = false;
+            }
+
+            // Validate donation amount
+            var amount = document.getElementById("amount").value;
+            if (amount.trim() === "" || isNaN(amount) || amount <= 0) {
+                document.getElementById("amountError").innerHTML = "Please enter a valid donation amount.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                stripe.createToken(card).then(function(result) {
+                    if (result.error) {
+                        document.getElementById("cardError").innerHTML = result.error.message;
+                    } else {
+                        submitForm(result.token);
+                    }
+                });
+            }
+        }
+
+        function submitForm(token) {
+            var form = document.getElementById('donationForm');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            // Submit the form to your server
+            form.submit();
+        }
+    </script>
+    <br><br>
+    <footer>
+        <p>&copy; 2024 Animal Rescue System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

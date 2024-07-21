@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="">
+    <link rel="icon" href="images/logo.jpeg" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Animal Rescue</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="adaption.html">Adoption</a>
+        <a href="donation.html">Donation</a>
+    </div>
+    <div class="x1"></div>
+    <h3 class="heading">Welcome to our Animal Rescue website. We are dedicated to helping animals in need.</h3>
+    <div class="content"><br>
+        <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data" >
+            <label>Please Upload the animal photo:</label>
+            <br><br>
+            <input type="file" name="animalPhoto" id="animalPhoto" required>
+            <button type="button" class="location-btn" onclick="getLocation()" required>Get Location</button><br>
+            <div id="location"></div>
+            <input type="hidden" name="address" id="address">
+            <br>
+            <button type="submit">Upload</button><br> <br>
+        </form>
+    </div><br>
+    <div class="section1">
+        <br>
+        <p>We are dedicated to rescuing injured and abandoned animals,<br> providing them with care, and finding them loving homes.</p><br>
+        <img src="images/happy-tales.jpeg"><br><br>
+        <a href="adaption.html" class="adap">Get Adopted</a>
+    </div><br>
+    <div class="section2">
+        <br>
+        <p>We provide immediate care and medical attention <br>to injured animals found on the streets.<br> Join us in making a difference.</p><br>
+        <img src="images/content2.png"><br><br>
+    </div><br>
+    <div class="section3">
+        <br>
+        <p>Our volunteers work tirelessly to rescue abandoned animals and<br> provide them with temporary shelter and love. <br>Help us by volunteering.</p><br>
+        <img src="images/content3.png"><br><br>
+    </div><br>
+    <div class="section4">
+        <br>
+        <p>Donations help us provide food, medical care, <br>and shelter to animals in need. <br>Your support can save lives.</p><br>
+        <img src="images/content4.png"><br><br>
+        <a href="donation.html" class="adap">Donation</a>
+    </div>
+    <br><br><br>
+    <div class="lastcont">
+        <img src="images/logo.jpeg">
+        <p>Animal Rescue Project focuses on saving at-risk pets in pound facilities.<br> We save homeless pets, one at a time, give them medical care and a safe<br>temporary home, and provide responsible adoption services to those seeking pets.</p><br>
+        <h2>Quick Links</h2>
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="adaption.html">Adoption</a>
+        <a href="donation.html">Donation</a>
+        <h3>Contact Us</h3>
+        <p1>Animal Rescue Project</p1><br>
+        <p2>Get in touch with us at <br>
+        info@animalrescue.com or <br>call us at (123) 456-7890.</p2>
+    </div>
+    <br>
+    <footer>
+        <p>&copy; 2024 Animal Adoption Center. All rights reserved.</p>
+    </footer>
+    <div class="video-box">
+        <video autoplay muted loop id="smallVideo" controls >
+            <source src="images/animal.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=0fc0207fc0ce4ed7b77d63ab8f7b0935`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.features && data.features.length > 0) {
+                        var address = data.features[0].properties.formatted;
+                        document.getElementById("location").innerHTML = "Location: " + address;
+                        document.getElementById("address").value = address;
+                    } else {
+                        document.getElementById("location").innerHTML = "No address found.";
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("location").innerHTML = "Error: " + error.message;
+                });
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("location").innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("location").innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("location").innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("location").innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

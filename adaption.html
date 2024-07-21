@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="images/logo.jpeg">
+	<title>Animal Rescue</title>
+    <link rel="stylesheet" type="text/css" href="adaption.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="adaption.html">Adoption</a>
+        <a href="donation.html">Donation</a>
+    </div>
+<section id="home">
+        <div class="hero"></div>
+        <div class="hero1">
+            <h2>Find Your New Best Friend</h2>
+            <p>Adopt a pet and give them a forever home.</p>
+        </div>
+    </section>
+
+    <section id="adopt">
+        <h2>Adopt a Pet</h2>
+        <div class="gallery">
+            <div class="animal-card">
+                <img src="images/labratory.jpg" alt="Animal Image">
+                <h3>Fluffy</h3>
+                <p>Breed: Labrador</p>
+                <p>Age: 2 years</p>
+                <button class="adopt-btn" onclick="showContact('Fluffy', 'Labrador','Bhanu','bhanu13@gmail.com','9740792081','Chintamani')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/german.jpg" alt="Animal Image">
+                <h3>Bella</h3>
+                <p>Breed: German Shepherd</p>
+                <p>Age: 3 years</p>
+                <button class="adopt-btn" onclick="showContact('Bella', 'German Shepherd','Neha','nehamr08@gmail.com','7760883144','Banglore')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/beagle.jpg" alt="Animal Image">
+                <h3>Luna</h3>
+                <p>Breed: Beagle</p>
+                <p>Age: 4 years</p>
+                <button class="adopt-btn" onclick="showContact('Luna', 'Beagle','Nandish','nandish24ks@gmail.com','9036702582','Chintamani')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/boxer.jpg" alt="Animal Image">
+                <h3>Charlie</h3>
+                <p>Breed: Boxer</p>
+                <p>Age: 2 years</p>
+                <button class="adopt-btn" onclick="showContact('Charlie', 'Boxer','Kusum','kusuampakira03@gmail.com','7975209680','Bengaluru')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/poodle.jpg" alt="Animal Image">
+                <h3>Daisy</h3>
+                <p>Breed: Poodle</p>
+                <p>Age: 3 years</p>
+                <button class="adopt-btn" onclick="showContact('Daisy', 'Poodle','Purushotham V.Mitti','puru@gmal.com','8073841366','Bengaluru')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/bulldog.jpg" alt="Animal Image">
+                <h3>Rocky</h3>
+                <p>Breed: Bulldog</p>
+                <p>Age: 5 years</p>
+                <button class="adopt-btn" onclick="showContact('Rocky', 'Bulldog','Babu','babu@gmail.com','9880533242','Mysuru')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/Dachshund.jpg" alt="Animal Image">
+                <h3>Molly</h3>
+                <p>Breed: Dachshund</p>
+                <p>Age: 2 years</p>
+                <button class="adopt-btn" onclick="showContact('Molly', 'Dachshund','Lakshmi','las@gmail.com','8757492458','Mysuru')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/Rottweiler.jpg" alt="Animal Image">
+                <h3>Rex</h3>
+                <p>Breed: Rottweiler</p>
+                <p>Age: 3 years</p>
+                <button class="adopt-btn" onclick="showContact('Rex', 'Rottweiler','Rahul','rahul@gmail.com','9008773030','Mandya')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/Siberian_Husky.jpg" alt="Animal Image">
+                <h3>Zoe</h3>
+                <p>Breed: Siberian Husky</p>
+                <p>Age: 4 years</p>
+                <button class="adopt-btn" onclick="showContact('Zoe', 'Siberian Husky','Priya','piya@gmail.com','9686912056','Bengaluru')">Adopt Me</button>
+            </div>
+            <div class="animal-card">
+                <img src="images/Chihuahua.jpg" alt="Animal Image">
+                <h3>Lily</h3>
+                <p>Breed: Chihuahua</p>
+                <p>Age: 1 year</p>
+                <button class="adopt-btn" onclick="showContact('Lily', 'Chihuahua','Nandini','nandini@gmail.com','9903586258','Chintamani')">Adopt Me</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="hidden">
+        <h2>Contact Us</h2>
+        <div class="contact-card">
+            <h3>Contact Information</h3>
+            <p id="animal-info"></p>
+            <p id="owner-info"></p>
+            <p id="email-info"></p>
+            <p id="phone-info"></p>
+            <p id="address-info"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Animal Adoption Center. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showContact(animalName, animalBreed,animalOwner,ownerEmail,ownerphone,owneraddress) {
+            document.getElementById('contact').classList.remove('hidden');
+            document.getElementById('animal-info').innerText = `Adopting: ${animalName} - ${animalBreed}`;
+            document.getElementById('owner-info').innerText=`Name: - ${animalOwner}`;
+            document.getElementById('email-info').innerText=`Email: - ${ownerEmail}`;
+            document.getElementById('phone-info').innerText=`Phone: - ${ownerphone}`;
+            document.getElementById('address-info').innerText=`Address: - ${owneraddress}`
+            window.location.href = '#contact';
+        }
+    </script>
+</body>
+</html>

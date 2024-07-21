@@ -1,0 +1,66 @@
+body{
+	background-color: #e1c0f0;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0 0 12px 12px;
+    background-color: #d3d9e3;
+    z-index: 1000; /* Ensures the navbar is above other content */
+}
+
+.navbar a {
+    display: block;
+    color: black;
+    text-align: center;
+    margin: 12px 15px;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.navbar a:hover {
+    background-color: #e65073;
+    color: black;
+    cursor: progress;
+}
+
+.navbar a:nth-child(5) {
+    border: 3.5px solid #FFDD43;
+    padding: 18px;
+}
+.container{
+	height: 380px;
+	width: 350px;
+	padding: 20px;
+	margin-left:500px;
+	justify-content:center;
+	display:block;
+	background-color: #f8f6f4;
+	border-radius: 15px;       
+}
+.container img{
+	width:250px;
+	height:250px;
+	margin-left:50px;
+}
+stripe-buy-button{
+	margin-left:30px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
